@@ -1,31 +1,68 @@
-# STF-YOLO（Based on yolov8）
-基于yolov8的模型改进
-包含多种backbone和head改进，以及多种注意力机制
-网络结构策略在cfg/models/v8里
+# 🏆 AI CUP 2025 Fall Competition  
+### Computed Tomography Myocardium Image Segmentation II  
+### Aortic Valve Object Detection  
 
-------------------------------------------------------------------------------------------------------------------------
-2024.4.28
-好多朋友反映出现了问题，在此我把我所有文件上传到STF-YOLO包库里：ultralytics文件夹
+**Team:** 8108  
+- **Private Leaderboard:** 0.963030  
+- **Public Leaderboard:** 0.971944  
 
-因为ultralytics使用的一键安装模式，本地再下载，会和环境里的包冲突
+---
 
-我的方法是**将ultralytics替换环境里的ultralytics包**，然后**更改ultralytics包里的文件、代码**
+## 📊 Dataset Overview
+The dataset is divided into three subsets to ensure robust training and evaluation:
 
-做法：
+- **Training set:** Optimizes model parameters and learns discriminative features of the myocardium and aortic valve.  
+- **Validation set:** Tunes hyperparameters and monitors generalization during training.  
+- **Test set:** Reserved for final evaluation, ensuring unbiased performance assessment.  
 
-**比如我使用的Ubuntu，于是只要将我新上传的ultralytics文件夹替换掉\\wsl.localhost\Ubuntu-20.04\home\ling\miniconda3\envs\torch\lib\python3.8\site-packages目录下的ultralytics即可**
+| Set        | Patients       | Images  | Instances |
+|------------|----------------|---------|-----------|
+| Train      | Patient01–40   | 13,177  | 2,168     |
+| Validation | Patient41–50   | 3,886   | 619       |
+| Test       | Patient51–100  | 16,620  | –         |
 
-在本地虚拟环境的找一下conda里的环境里的包就行
+---
 
+## 🏗️ Model Architecture
 
-Object detection yolov8 model improvement
+### Backbone
+- Input: **640×640×3** CT images  
+- Convolutional layer followed by **MyGhost modules** for efficient channel expansion and reduced redundancy  
+- **C2f blocks** integrated at each stage to improve gradient flow and feature representation  
+- **WAFU modules** refine spatial information  
+- Progressive resolution reduction: `160×160 → 80×80 → 40×40 → 20×20`  
+- **SPPF module** aggregates multi-scale context for both small and large object detection  
 
-《Small Object Detection Algorithm Incorporating Swin Transformer for Tea Buds》
+### Neck
+- Optimized **PANet** for multi-scale feature fusion  
+- Deep features upsampled and concatenated with shallow features  
+- Fusion stages enhanced with **C2f** and **WAFU modules**  
+- Ensures balanced representation of local and global information  
 
-Replace the above files with the files in the original version of yolov8.
+### Head
+- **Decoupled detection design**: separate branches for classification, bounding box regression, and objectness scoring  
+- Attention modules applied at multiple scales:  
+  - **SmallAttention:** 20×20×512  
+  - **MediumAttention:** 40×40×256  
+  - **LargeAttention:** 80×80×128  
+- Multi-scale **Detect layer** integrates outputs from `[24, 37, 38, 39]` for robust predictions across object sizes  
 
-There are many strategies in cfg/models/v8, among which I recommend *yolov8x_DW_swin_FOCUS-3.yaml*.
+---
 
-Use the following command on the command line：
-```
-yolo task=detect mode=train model=yolov8x_DW_swin_FOCUS-3.yaml data=data.yaml batch=8 epochs=300 imgsz=640 workers=4 device=0 mosaic=1 mixup=0.5 flipud=0.5 fliplr=0.5 cache=True
+## ⚡ Performance Metrics
+
+| FPS (ms) | FLOPs (G) | Params (M) | Precision (%) | Recall (%) | mAP@50 (%) | mAP@50:95 (%) |
+|----------|-----------|------------|---------------|------------|------------|---------------|
+| 0.2      | 60.0      | 16.5       | 91.1          | 94.1       | 95.6       | 68.4          |
+
+---
+
+## 🚀 Highlights
+- High accuracy on both private and public leaderboards  
+- Efficient backbone design with **MyGhost + C2f + WAFU** modules  
+- Robust multi-scale detection with attention mechanisms  
+- Balanced trade-off between computational cost and detection performance  
+
+---
+
+📌 This README provides a structured overview of our solution for **AI CUP 2025 Fall Competition**.  
