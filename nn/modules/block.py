@@ -651,7 +651,7 @@ class GAM_Attention(nn.Module):
 
 from torch import nn as nn
 
-from timm.models.layers.norm import LayerNorm2d
+from timm.layers.norm import LayerNorm2d
 
 
 class GlobalContext(nn.Module):
@@ -709,10 +709,10 @@ import math, torch
 from torch import nn as nn
 import torch.nn.functional as F
 
-from timm.models.layers.create_act import create_act_layer, get_act_layer
-from timm.models.layers.create_conv2d import create_conv2d
-from timm.models.layers.helpers import make_divisible
-from timm.models.layers.mlp import ConvMlp
+from timm.layers.create_act import create_act_layer, get_act_layer
+from timm.layers.create_conv2d import create_conv2d
+from timm.layers.helpers import make_divisible
+from timm.layers.mlp import ConvMlp
 
 
 class GatherExcite(nn.Module):
@@ -977,7 +977,7 @@ class SEAttention(nn.Module):
 
 import torch
 from torch import nn as nn
-from timm.models.layers.create_act import create_act_layer
+from timm.layers.create_act import create_act_layer
 
 
 class EffectiveSE(nn.Module):
