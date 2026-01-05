@@ -9,6 +9,8 @@
 ---
 
 ## 📊 Dataset Overview
+![Dataset Overview](https://github.com/thinhdoanvu/aicup25/blob/main/imgs/data.jpg)
+
 The dataset is divided into three subsets to ensure robust training and evaluation:
 
 - **Training set:** Optimizes model parameters and learns discriminative features of the myocardium and aortic valve.  
@@ -21,9 +23,13 @@ The dataset is divided into three subsets to ensure robust training and evaluati
 | Validation | Patient41–50   | 3,886   | 619       |
 | Test       | Patient51–100  | 16,620  | –         |
 
+![Dataset Overview](https://github.com/thinhdoanvu/aicup25/blob/main/imgs/data2.png)
+
 ---
 
 ## 🏗️ Model Architecture
+
+![Dataset Overview](https://github.com/thinhdoanvu/aicup25/blob/main/imgs/architecture.png)
 
 ### Backbone
 - Input: **640×640×3** CT images  
@@ -55,13 +61,16 @@ The dataset is divided into three subsets to ensure robust training and evaluati
 |----------|-----------|------------|---------------|------------|------------|---------------|
 | 0.2      | 60.0      | 16.5       | 91.1          | 94.1       | 95.6       | 68.4          |
 
+![Dataset Overview](https://github.com/thinhdoanvu/aicup25/blob/main/imgs/results.png)
 ---
 
 ## 🚀 Highlights
 - High accuracy on both private and public leaderboards  
 - Efficient backbone design with **Ghost + C2f + WAFU** modules  
 - Robust multi-scale detection with attention mechanisms  
-- Balanced trade-off between computational cost and detection performance  
+- Balanced trade-off between computational cost and detection performance
+
+![Dataset Overview](https://github.com/thinhdoanvu/aicup25/blob/main/imgs/heatmap.png)
 
 ---
 
