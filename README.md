@@ -27,7 +27,7 @@ The dataset is divided into three subsets to ensure robust training and evaluati
 
 ### Backbone
 - Input: **640×640×3** CT images  
-- Convolutional layer followed by **MyGhost modules** for efficient channel expansion and reduced redundancy  
+- Convolutional layer followed by **Ghost modules** for efficient channel expansion and reduced redundancy  
 - **C2f blocks** integrated at each stage to improve gradient flow and feature representation  
 - **WAFU modules** refine spatial information  
 - Progressive resolution reduction: `160×160 → 80×80 → 40×40 → 20×20`  
