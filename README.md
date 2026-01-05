@@ -59,7 +59,7 @@ The dataset is divided into three subsets to ensure robust training and evaluati
 
 ## 🚀 Highlights
 - High accuracy on both private and public leaderboards  
-- Efficient backbone design with **MyGhost + C2f + WAFU** modules  
+- Efficient backbone design with **Ghost + C2f + WAFU** modules  
 - Robust multi-scale detection with attention mechanisms  
 - Balanced trade-off between computational cost and detection performance  
 
